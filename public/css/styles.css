@@ -32,7 +32,7 @@ body.dark {
     --input-color: #c8cbe7;
     --input-bg: #25273d;
     --placeholder-color:#767992;
-    --button-color:#585e7e;
+    --button-color:#25273d;
     --button-color-hover:#c8cbe7;
     --bg-body: #171823;
     --bg-tarefas: #25273d;
@@ -68,6 +68,12 @@ header div div{
     justify-content: space-between;
 
     margin-bottom: 2.5rem;
+}
+
+header button {
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 header div h1{
