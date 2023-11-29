@@ -52,6 +52,8 @@ conexao.connect((erro) =>{
         return console.log(erro)
     }
 
+    console.log("Estou conectado ao MySQL")
+
     console.log("Estou conectado ao MySQL.")
 
     app.listen(3000, () => {
