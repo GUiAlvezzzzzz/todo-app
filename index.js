@@ -1,3 +1,4 @@
+const { response } = require("express")
 const express = require("express")
 const exphbs = require("express-handlebars")
 const mysql = require("mysql2")
@@ -17,6 +18,18 @@ app.use(express.urlencoded({
 app.use(express.json())
 
 //rotas
+app.get('/Limpartarefas', (requisicao, resposta) =>{
+    const sql = 'DELETE FROM tarefas'
+
+    conexao.query(sql, (erro) => {
+        if (erro) {
+            return console.log(erro)
+        }
+
+        responsta.redirect('/')
+    })
+})
+
 
 app.post('/excluir', (requisicao, resposta) =>{
     const id = requisicao.body.id
