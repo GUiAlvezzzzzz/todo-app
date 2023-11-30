@@ -1,4 +1,3 @@
-const { response } = require("express")
 const express = require("express")
 const exphbs = require("express-handlebars")
 const mysql = require("mysql2")
@@ -26,7 +25,7 @@ app.get('/Limpartarefas', (requisicao, resposta) =>{
             return console.log(erro)
         }
 
-        responsta.redirect('/')
+        resposta.redirect('/')
     })
 })
 
@@ -135,7 +134,7 @@ app.get('/ativas', (requisicao, resposta) => {
     WHERE completa = 0
     `
 
-    conexao.query(sql,(erro,dados) => {
+    conexao.query(sql,(erro, dados) => {
       if (erro) {
             return console.log(erro)
         }
@@ -148,14 +147,14 @@ app.get('/ativas', (requisicao, resposta) => {
             }
         })
 
-        const quantidadeTarefas = tarefa.length
+        const quantidadeTarefas = tarefas.length
 
         resposta.render('ativas', { tarefas, quantidadeTarefas})
      })
 })
 
 app.get('/', (requisicao, resposta) => {
-    const sql = 'SELEC = FROM tarefas'
+    const sql = 'SELECT * FROM tarefas'
 
 conexao.query(sql, (erro, dados) => {
     if (erro) {
@@ -166,7 +165,7 @@ conexao.query(sql, (erro, dados) => {
         return {
             id: dado.id,
             descricao: dado.descricao,
-            completa: dado.completa --- 0 ? false : true
+            completa: dado.completa === 0 ? false : true
         }
     })
 
@@ -177,9 +176,8 @@ conexao.query(sql, (erro, dados) => {
     const quantidadeTarefasAtivas = tarefasAtivas.length
 
     resposta.render('home', { tarefas, quantidadeTarefasAtivas })
-})
+    })
 
-    resposta.render('home')
 })
 
 const conexao = mysql.createConnection({
@@ -190,14 +188,12 @@ const conexao = mysql.createConnection({
     port:3306
 })
 
-conexao.connect((erro) =>{
+conexao.connect((erro) => {
     if (erro) {
         return console.log(erro)
     }
 
     console.log("Estou conectado ao MySQL")
-
-    console.log("Estou conectado ao MySQL.")
 
     app.listen(3000, () => {
         console.log("Servidor rodando na porta 3000!")

@@ -45,13 +45,13 @@ function alterarTema() {
         if (tema === "Light") {
             novoTema = "dark"
             button.innerHTML = '<img src="/imagens/sun-icon.png" alt="Ícone do Sol">'
-            body.classList.remove("Light")
-            body.classList.add("dark")
+            body.classList.remove("dark")
+            body.classList.add("Light")
         } else {
             novoTema = "dark"
             button.innerHTML ='<img src="/imagens/moon.png" alt="Ícone de Lua">'
-            body.classList.remove("dark")
-            body.classList.add("Light")
+            body.classList.remove("Light")
+            body.classList.add("dark")
         }
 
         localStorage.setItem("tema", novoTema)
