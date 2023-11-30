@@ -73,6 +73,10 @@ app.post('/criar', (requisicao, resposta) => {
     })
 })
 
+app.get('/ativas', (requisicao, resposta) => {
+    
+})
+
 app.get('/', (requisicao, resposta) => {
     const sql = 'SELEC = FROM tarefas'
 
@@ -89,7 +93,13 @@ conexao.query(sql, (erro, dados) => {
         }
     })
 
-    resposta.render('home', { tarefas })
+    const tarefasAtivas = tarefas.filter((tarefas) => {
+        return tarefa.completa === false && tarefa
+    })
+
+    const quantidadeTarefasAtivas = tarefasAtivas.length
+
+    resposta.render('home', { tarefas, quantidadeTarefasAtivas })
 })
 
     resposta.render('home')
