@@ -30,7 +30,7 @@ app.post('/criar', (requisicao, resposta) => {
         if (erro) {
             return console.log(erro)
         }
-
+        
         resposta.redirect('/')
     })
 })
@@ -51,7 +51,7 @@ conexao.query(sql, (erro, dados) => {
         }
     })
 
-    
+    resposta.render('home', { tarefas })
 })
 
     resposta.render('home')
